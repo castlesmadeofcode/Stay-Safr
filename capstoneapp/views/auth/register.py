@@ -36,6 +36,7 @@ def register(request):
                 login(request, user)
                 # Redirect to a success page.
                 return redirect(reverse('capstoneapp:home'))
+   
         except Exception as e:
             messages.error(request, f'{type(e)}: {e}')
           
