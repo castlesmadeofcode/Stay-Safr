@@ -1,0 +1,43 @@
+{% extends 'shared/base.html' %}
+
+
+{% block content %}
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form action="{% url 'capstoneapp:register' %}" method="post">
+      {% csrf_token %}
+      <fieldset>
+          <label for="username">Username: </label>
+          <input id="username" type="text" name="username">
+      </fieldset>
+      <fieldset>
+          <label for="password">Password: </label>
+          <input id="password" type="password" name="password">
+      </fieldset>
+      <fieldset>
+          <label for="password_confirmation">Password Confirmation: </label>
+          <input id="password_confirmation" type="password" name="password_confirmation">
+      </fieldset>
+      <fieldset>
+          <label for="address">Address: </label>
+          <input id="address" type="text" name="address">
+      </fieldset>
+      <fieldset>
+          <label for="phone_number">Phone Number: </label>
+          <input id="phone_number" type="text" name="phone_number">
+      </fieldset>
+      <fieldset>
+          <label for="image_path">Image: </label>
+          <input id="image_path" type="text" name="image_path">
+      </fieldset>
+      </fieldset>
+
+      <input type="submit" value="Submit" />
+    </form>
+{% endblock %}
