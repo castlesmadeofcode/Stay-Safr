@@ -12,7 +12,7 @@ def get_business_types():
 def business_form(request):
     if request.method == 'GET':
         business_types = get_business_types()
-        template = 'businesses/form.html'
+        template = 'businesses/business_form.html'
         context = {
             'all_business_types': business_types
         }
@@ -25,7 +25,7 @@ def business_edit_form(request, business_id):
     if request.method == 'GET':
         business = get_business(business_id)
         business_types = get_business_types
-        template = 'businesses/form.html'
+        template = 'businesses/business_form.html'
         context = {
             'business': business,
             'all_business_types': business_types

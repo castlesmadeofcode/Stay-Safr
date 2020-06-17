@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <title>Capstone</title>
 
-    {% comment %} <link rel="stylesheet" href="{% static 'styles/base.css' %}" /> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'styles/base.css' %}" />
 
     {% block css %}
     {% endblock %}
@@ -17,6 +17,7 @@
     <nav id="site-nav">
         <ol class="navList">
             <li class="navList__route"><a href="{% url 'capstoneapp:home' %}">Home</a></li>
+            <li class="navList__route"><a href="{% url 'capstoneapp:businesses' %}">Businesses</a></li>
             <li class="navList__route"><a href="{% url 'capstoneapp:register' %}">Register</a></li>
             <li class="navList__route"><a href="{% url 'capstoneapp:login' %}">Login</a></li>
             <li class="navList__route"><a href="{% url 'capstoneapp:logout' %}">Logout</a></li>

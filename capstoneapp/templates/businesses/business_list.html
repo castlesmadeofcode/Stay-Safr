@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block css %}
-    {% comment %} <link rel="stylesheet" href="{% static 'styles/businesses.css' %}" /> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'styles/businesses.css' %}" />
 {% endblock %}
 
 {% block content %}
@@ -13,16 +13,13 @@
         <button class="closeDialog">Close</button>
     </dialog>
 
-    <a href="{% url 'capstoneapp:business_form' %}">Add Book to Inventory</a>
+    <a href="{% url 'capstoneapp:business_form' %}">Add Business</a>
 
     <ol class="businesses">
     {% for business in all_businesses %}
         <li class="business">
-            <a class="business__title" href="{% url 'capstoneapp:business' business.id %}"> {{ business.title }}</a>
-            <div class="business__description">
-                by {{business.author}} published in {{business.year_published}}
-            </div>
-            <button id="detail--{{ business.id }}">Details</button>
+            <a class="business__title" href="{% url 'capstoneapp:business' business.id %}"> {{ business.name }}</a>
+            {% comment %} <button id="detail--{{ business.id }}">Details</button> {% endcomment %}
         </li>
     {% endfor %}
     </ol>

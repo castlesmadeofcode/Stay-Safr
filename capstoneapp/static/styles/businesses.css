@@ -1,0 +1,22 @@
+.businesses {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.business {
+  flex-basis: 20%;
+  padding: 0 2em 0.5em 2em;
+  border: 1px solid gray;
+  margin: 1em;
+  padding: 1.5em;
+}
+
+.business__title {
+  font-size: 1.1em;
+}
+
+.business__description {
+  font-size: 0.75em;
+}

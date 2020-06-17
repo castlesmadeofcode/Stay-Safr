@@ -22,8 +22,8 @@
             <input id="description" type="text" name="description" value="{{ business.description }}">
         </fieldset>
         <fieldset>
-            <label for="location">Year of publication: </label>
-            <input id="location" type="number" name="location" value="{{ business.location }}">
+            <label for="location">Location: </label>
+            <input id="location" type="text" name="location" value="{{ business.location }}">
         </fieldset>
         <fieldset>
             <label for="phone_number">Phone Number: </label>
@@ -37,15 +37,11 @@
             <label for="website">Website: </label>
             <input id="website" type="text" name="website" value="{{ business.website }}">
         </fieldset>
-         <fieldset>
-            <label for="created_at">Created at: </label>
-            <input id="created_at" type="text" name="created_at" value="{{ business.created_at }}">
-        </fieldset>
         <fieldset>
             <label for="business_type">Business Type: </label>
             <select id="business_type" type="text" name="business_type">
                 {% for business_type in all_business_types %}
-                <option {% if business_type.id == business.business_type_id %}selected{% endif %} value="{{ business_type.id }}">
+                <option value="{{ business_type.id }}">
                     {{ business_type.name }}</option>
                 {% endfor %}
             </select>

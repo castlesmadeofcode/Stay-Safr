@@ -8,7 +8,7 @@ class Business(models.Model):
 
     name = models.CharField(max_length=50)
     customer = models.ForeignKey(Customer, on_delete=models.DO_NOTHING)
-    price = models.FloatField()
+    price = models.IntegerField()
     description = models.CharField(max_length=255)
     phone_number = models.IntegerField()
     location = models.CharField(max_length=75, null=True)

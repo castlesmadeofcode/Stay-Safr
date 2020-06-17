@@ -13,7 +13,7 @@ def business_details(request, business_id):
     if request.method == 'GET':
         business = get_business(business_id)
 
-        template = 'businesses/detail.html'
+        template = 'businesses/business_detail.html'
         context = {
             'business': business
         }
@@ -41,16 +41,20 @@ def business_details(request, business_id):
             "actual_method" in form_data
             and form_data["actual_method"] == "PUT"
         ):
+            # print(form_data)
+            # price = form_data['price']
+            # price = int(price)
+            
             business_to_update = get_business(business_id)
 
-            business_to_update.name = form_data['name'],
-            business_to_update.price = form_data['price'],
-            business_to_update.description = form_data['description'],
-            business_to_update.location = form_data['location'],
-            business_to_update.phone_number = form_data['phone_number'],
-            business_to_update.address = form_data['address'],
-            business_to_update.website = form_data['website'],
-            business_to_update.business_type_id = form_data['business_type'],
+            business_to_update.name = form_data['name']
+            business_to_update.price = form_data['price']
+            business_to_update.description = form_data['description']
+            business_to_update.location = form_data['location']
+            business_to_update.phone_number = form_data['phone_number']
+            business_to_update.address = form_data['address']
+            business_to_update.website = form_data['website']
+            business_to_update.business_type_id = form_data['business_type']
 
             business_to_update.save()
 

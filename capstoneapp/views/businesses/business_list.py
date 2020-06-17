@@ -8,7 +8,7 @@ def business_list(request):
     if request.method == 'GET':
         all_businesses = Business.objects.all()
 
-        template = 'businesses/list.html'
+        template = 'businesses/business_list.html'
         context = {
             'all_businesses': all_businesses
         }
@@ -28,7 +28,7 @@ def business_list(request):
             phone_number = form_data['phone_number'],
             address = form_data['address'],
             website = form_data['website'],
-            business_type_id = form_data['business_type_id'],
+            business_type_id = form_data['business_type'],
             created_at = form_data['created_at']
         )
         
