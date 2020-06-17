@@ -12,6 +12,7 @@ class Business(models.Model):
     description = models.CharField(max_length=255)
     phone_number = models.IntegerField()
     location = models.CharField(max_length=75, null=True)
+    image = models.CharField(max_length=75, null=True)
     # image = models.ImageField(upload_to='capstone_images', null=True)
     address = models.CharField(max_length=75, null=True)
     website = models.CharField(max_length=75, null=True)
