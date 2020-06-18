@@ -25,7 +25,7 @@ def review_details(request, review_id):
             review_to_delete = get_review(review_id)
             review_to_delete.delete()
 
-            return redirect(reverse('capstoneapp:reviews'))
+            return redirect(reverse('capstoneapp:business', args=[review_to_delete.business_id]))
 
         # Check if this POST is for editing a review
         if (
@@ -37,5 +37,4 @@ def review_details(request, review_id):
             review_to_update.comment = form_data['comment']
             review_to_update.save()
 
-            #redirects back to the reviews details page after edit
-            return redirect(reverse('capstoneapp:review', args=[review_to_update.id]))
+            return redirect(reverse('capstoneapp:business', args=[review_to_update.business_id]))

@@ -6,11 +6,6 @@ from .review_details import get_review
 
 
 
-
-# def get_business():
-#     return Business.objects.all()
-
-
 @login_required
 def review_form(request):
     if request.method == 'GET':
@@ -18,7 +13,6 @@ def review_form(request):
         print(business_id)
         template = 'reviews/review_form.html'
         context = {
-            # 'all_business': business
             'business_id': business_id
         }
 

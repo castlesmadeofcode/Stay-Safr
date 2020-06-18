@@ -5,7 +5,7 @@ from datetime import datetime
 
 
 @login_required
-def review_list(request):
+def create_review(request):
       
     if request.method == 'POST':
         form_data = request.POST
