@@ -8,16 +8,22 @@ def get_business(business_id):
     return Business.objects.get(pk=business_id)
 
 
+# def get_review(review_id):
+    # return Review.objects.get(pk=review_id)
+
+
+
 @login_required
 def business_details(request, business_id):
     if request.method == 'GET':
         business = get_business(business_id)
-        all_reviews = Review.objects.all()
+        all_reviews = Review.objects.filter(business_id = business_id)
 
         template = 'businesses/business_detail.html'
         context = {
             'business': business,
-            'all_reviews': all_reviews
+            'all_reviews': all_reviews,
+            # 'review': review
         }
 
         return render(request, template, context)

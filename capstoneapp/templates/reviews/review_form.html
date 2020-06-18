@@ -4,19 +4,23 @@
     <h1>Review Form</h1>
 
     {% if review.id is not None %}
-        <form action="{% url 'capstoneapp:review' review.id %}" method="post">
+        <form action="{% url 'capstoneapp:reviews' %}" method="post">
     {% else %}
         <form action="{% url 'capstoneapp:reviews' %}" method="post">
     {% endif %}
         {% csrf_token %}
         <fieldset>
             <label for="rating">Rating: </label>
-            <input id="rating" type="text" rating="rating" value="{{ review.rating }}" required>
+            <input id="rating" type="text" name="rating" value="{{ review.rating }}" required>
         </fieldset>
         <fieldset>
             <label for="comment">Comment: </label>
             <input id="comment" type="text" name="comment" value="{{ review.comment }}" required>
         </fieldset>
+        <fieldset>
+            <input id="business_id" type="hidden" name="business_id" value="{{ business_id }}" required>
+        </fieldset>
+
 
         {% if review.id is not None %}
             <input type="hidden" name="actual_method" value="PUT">

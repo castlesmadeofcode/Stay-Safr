@@ -10,15 +10,6 @@ def get_review(review_id):
 
 @login_required
 def review_details(request, review_id):
-    if request.method == 'GET':
-        review = get_review(review_id)
-
-        template = 'reviews/review_detail.html'
-        context = {
-            'review': review
-        }
-
-        return render(request, template, context)
 
     if request.method == 'POST':
         form_data = request.POST

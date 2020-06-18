@@ -9,6 +9,8 @@ def review_list(request):
       
     if request.method == 'POST':
         form_data = request.POST
+
+
     
         
         new_review = Review.objects.create(
@@ -16,8 +18,8 @@ def review_list(request):
             comment = form_data['comment'],
             created_at = datetime.now(),
             customer_id = request.user.customer.id,
-            business_id = 1,
+            business_id = form_data['business_id'],
         )
         
 
-    # return redirect(reverse('capstoneapp:business', args=[new_review.business_id]))
+    return redirect(reverse('capstoneapp:business', args=[new_review.business_id]))
