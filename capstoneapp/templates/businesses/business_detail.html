@@ -27,7 +27,18 @@
             <button>Edit</button>
         </form>
     </section>
-
         {% endif %}
+        {% if request.user.customer.id is not None %}
+        <form action="{% url 'capstoneapp:review_form' %}">
+            <input type="submit" value="Add Review"/>
+        </form>
+        {% endif %}
+
+         {% for review in all_reviews %}
+        <li class="reviews">
+            <p>rating {{ review.rating }}</p>
+            <p>comment {{ review.comment }}</p>
+        </li>
+        {% endfor %}
     
 {% endblock %}

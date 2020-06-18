@@ -1,7 +1,7 @@
 from django.urls import reverse
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from capstoneapp.models import Business
+from capstoneapp.models import Business, Review
 
 
 def get_business(business_id):
@@ -12,10 +12,12 @@ def get_business(business_id):
 def business_details(request, business_id):
     if request.method == 'GET':
         business = get_business(business_id)
+        all_reviews = Review.objects.all()
 
         template = 'businesses/business_detail.html'
         context = {
-            'business': business
+            'business': business,
+            'all_reviews': all_reviews
         }
 
         return render(request, template, context)
