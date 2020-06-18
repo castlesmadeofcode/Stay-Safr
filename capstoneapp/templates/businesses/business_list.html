@@ -1,0 +1,30 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'styles/businesses.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <h1>Businesses</h1>
+
+    <dialog class="infoDialog">
+        <div class="infoDialog__message"></div>
+        <button class="closeDialog">Close</button>
+    </dialog>
+
+    <a href="{% url 'capstoneapp:business_form' %}">Add Business</a>
+
+    <ol class="businesses">
+    {% for business in all_businesses %}
+        <li class="business">
+            <a class="business__title" href="{% url 'capstoneapp:business' business.id %}"> {{ business.name }}</a>
+            {% comment %} <button id="detail--{{ business.id }}">Details</button> {% endcomment %}
+        </li>
+    {% endfor %}
+    </ol>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'scripts/businesses.js' %}"></script>
+{% endblock %}

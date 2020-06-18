@@ -1,0 +1,29 @@
+{% extends 'shared/base.html' %}
+{% block content %}
+
+    <section id="business-details">
+        <h1>{{ business.name }}</h1>
+        <h2>Price {{ business.price }}</h2>
+        <div>Description {{ business.description }}</div>
+        <div>Location {{ business.location }}</div>
+        <div>Phone Number {{ business.phone_number }}</div>
+        <div>Address {{ business.address }}</div>
+        <div>Created by {{ business.customer.user.first_name }} {{ business.customer.user.last_name }}</div>
+        <div>Website {{ business.website }}</div>
+        <div>Business Type {{ business.business_type.name }}</div>
+    </section>
+
+    <section id="business-actions" style="display:flex;">
+        <form action="{% url 'capstoneapp:business' business.id %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="actual_method" value="DELETE">
+            <button>Delete</button>
+        </form>
+
+        <form action="{% url 'capstoneapp:business_edit_form' business.id %}" method="GET">
+            {% csrf_token %}
+            <button>Edit</button>
+        </form>
+    </section>
+    
+{% endblock %}

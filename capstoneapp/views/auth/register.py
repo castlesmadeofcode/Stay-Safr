@@ -6,11 +6,8 @@ from django.contrib.auth import authenticate, login
 from capstoneapp.models import Customer, Business
 from django.forms import ValidationError
 
-# If you only have the Django auth User table in your database and you don't need additional data on registration, use the following tutorial:
-#   https://overiq.com/django-1-10/django-creating-users-using-usercreationform/
-# Here is another tutorail that shows a few different helpful implementations:
-#   https://simpleisbetterthancomplex.com/tutorial/2016/06/27/how-to-use-djangos-built-in-login-system.html
-  
+
+#   TODO: clean up error messages
   
 def register(request):
     if request.method == 'POST':

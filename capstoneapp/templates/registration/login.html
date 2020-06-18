@@ -7,5 +7,7 @@
     {{ form.as_p }}
     <button type="submit">Login</button>
 </form>
-
+<form action="{% url 'capstoneapp:register' %}">
+    <input type="submit" value="Register"/>
+</form>
 {% endblock %}
