@@ -41,9 +41,7 @@ def business_details(request, business_id):
             "actual_method" in form_data
             and form_data["actual_method"] == "PUT"
         ):
-            # print(form_data)
-            # price = form_data['price']
-            # price = int(price)
+
             
             business_to_update = get_business(business_id)
 
