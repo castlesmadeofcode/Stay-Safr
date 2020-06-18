@@ -35,10 +35,12 @@
         {% endif %}
 
          {% for review in all_reviews %}
+         <ul>
         <li class="reviews">
             <p>rating {{ review.rating }}</p>
             <p>comment {{ review.comment }}</p>
         </li>
+        </ul>
         {% endfor %}
     
 {% endblock %}
