@@ -29,7 +29,6 @@ def business_list(request):
             address = form_data['address'],
             website = form_data['website'],
             business_type_id = form_data['business_type'],
-            created_at = form_data['created_at']
         )
         
 

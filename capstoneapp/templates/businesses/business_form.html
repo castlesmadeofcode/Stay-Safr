@@ -11,31 +11,31 @@
         {% csrf_token %}
         <fieldset>
             <label for="name">Name: </label>
-            <input id="name" type="text" name="name" value="{{ business.name }}">
+            <input id="name" type="text" name="name" value="{{ business.name }}" required>
         </fieldset>
         <fieldset>
             <label for="price">Price: </label>
-            <input id="price" type="text" name="price" value="{{ business.price }}">
+            <input id="price" type="text" name="price" value="{{ business.price }}" required>
         </fieldset>
         <fieldset>
             <label for="description">Description: </label>
-            <input id="description" type="text" name="description" value="{{ business.description }}">
+            <input id="description" type="text" name="description" value="{{ business.description }}" required>
         </fieldset>
         <fieldset>
             <label for="location">Location: </label>
-            <input id="location" type="text" name="location" value="{{ business.location }}">
+            <input id="location" type="text" name="location" value="{{ business.location }}" required>
         </fieldset>
         <fieldset>
             <label for="phone_number">Phone Number: </label>
-            <input id="phone_number" type="text" name="phone_number" value="{{ business.phone_number }}">
+            <input id="phone_number" type="text" name="phone_number" value="{{ business.phone_number }}" required>
         </fieldset>
          <fieldset>
             <label for="address">Address: </label>
-            <input id="address" type="text" name="address" value="{{ business.address }}">
+            <input id="address" type="text" name="address" value="{{ business.address }}" required>
         </fieldset>
          <fieldset>
             <label for="website">Website: </label>
-            <input id="website" type="text" name="website" value="{{ business.website }}">
+            <input id="website" type="text" name="website" value="{{ business.website }}" required>
         </fieldset>
         <fieldset>
             <label for="business_type">Business Type: </label>

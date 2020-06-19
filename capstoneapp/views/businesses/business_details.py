@@ -1,21 +1,29 @@
 from django.urls import reverse
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from capstoneapp.models import Business
+from capstoneapp.models import Business, Review
 
 
 def get_business(business_id):
     return Business.objects.get(pk=business_id)
 
 
+# def get_review(review_id):
+    # return Review.objects.get(pk=review_id)
+
+
+
 @login_required
 def business_details(request, business_id):
     if request.method == 'GET':
         business = get_business(business_id)
+        all_reviews = Review.objects.filter(business_id = business_id)
 
         template = 'businesses/business_detail.html'
         context = {
-            'business': business
+            'business': business,
+            'all_reviews': all_reviews,
+            # 'review': review
         }
 
         return render(request, template, context)
@@ -41,9 +49,7 @@ def business_details(request, business_id):
             "actual_method" in form_data
             and form_data["actual_method"] == "PUT"
         ):
-            # print(form_data)
-            # price = form_data['price']
-            # price = int(price)
+
             
             business_to_update = get_business(business_id)
 

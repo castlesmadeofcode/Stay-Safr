@@ -13,7 +13,11 @@
         <button class="closeDialog">Close</button>
     </dialog>
 
+     {% comment %} {% if business.customer_id == request.user.customer.id %} {% endcomment %}
+        
     <a href="{% url 'capstoneapp:business_form' %}">Add Business</a>
+
+      {% comment %} {% endif %} {% endcomment %}
 
     <ol class="businesses">
     {% for business in all_businesses %}
