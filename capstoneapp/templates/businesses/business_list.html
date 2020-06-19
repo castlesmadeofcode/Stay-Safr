@@ -22,7 +22,8 @@
     <ol class="businesses">
     {% for business in all_businesses %}
         <li class="business">
-            <a class="business__title" href="{% url 'capstoneapp:business' business.id %}"> {{ business.name }}</a>
+            <a class="business__title" href="{% url 'capstoneapp:business' business.id %}"> {{ business.name }} </a>
+            <img class="profile-image" src="{{ business.image.url }}" />
             {% comment %} <button id="detail--{{ business.id }}">Details</button> {% endcomment %}
         </li>
     {% endfor %}

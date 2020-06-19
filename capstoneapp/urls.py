@@ -1,5 +1,7 @@
 from django.urls import path, include
 from .views import *
+from .models import *
+
 
 app_name = "capstoneapp"
 
@@ -19,3 +21,4 @@ urlpatterns = [
     path('logout/', logout_user, name='logout'),
     path('', home, name='home'),
 ]
+
