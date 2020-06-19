@@ -44,7 +44,7 @@
 {% comment %} {% if review.customer_id == request.user.customer.id %} {% endcomment %}
 
         <section id="review-actions" style="display:flex;">
-        <form action="{% url 'capstoneapp:business' business.id %}" method="POST">
+        <form action="{% url 'capstoneapp:review' review.id  %}" method="POST">
             {% csrf_token %}
             <input type="hidden" name="actual_method" value="DELETE">
             <button onclick="return confirm('Are you sure you want to delete this?')">Delete</button>

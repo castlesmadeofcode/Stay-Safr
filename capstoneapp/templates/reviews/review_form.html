@@ -4,7 +4,7 @@
     <h1>Review Form</h1>
 
     {% if review.id is not None %}
-        <form action="{% url 'capstoneapp:reviews' %}" method="post">
+        <form action="{% url 'capstoneapp:review' review.id %}" method="post">
     {% else %}
         <form action="{% url 'capstoneapp:reviews' %}" method="post">
     {% endif %}
