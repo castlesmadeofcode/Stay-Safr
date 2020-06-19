@@ -4,9 +4,9 @@
     <h1>Business Form</h1>
 
     {% if business.id is not None %}
-        <form action="{% url 'capstoneapp:business' business.id %}" method="post">
+        <form action="{% url 'capstoneapp:business' business.id %}" method="post" enctype="multipart/form-data">
     {% else %}
-        <form action="{% url 'capstoneapp:businesses' %}" method="post">
+        <form action="{% url 'capstoneapp:businesses' %}" method="post" enctype="multipart/form-data">
     {% endif %}
         {% csrf_token %}
         <fieldset>
@@ -36,6 +36,10 @@
          <fieldset>
             <label for="website">Website: </label>
             <input id="website" type="text" name="website" value="{{ business.website }}" required>
+        </fieldset>
+        <fieldset>
+            <label for="image">Image: </label>
+             <input required type="file" id="image" name="image">
         </fieldset>
         <fieldset>
             <label for="business_type">Business Type: </label>
