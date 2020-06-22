@@ -1,15 +1,29 @@
 from django.shortcuts import render, redirect, reverse
-from capstoneapp.models import Business
+from capstoneapp.models import Business, Review
 from django.contrib.auth.decorators import login_required
+from .business_details import get_Avg
+from django.db.models import Q
+
+
+# def business_id(all_businesses):
+#     for business in all_businesses:
+#         print(business.id)
+#         return business.id
 
 
 def business_list(request):
     if request.method == 'GET':
         all_businesses = Business.objects.all()
+        new_query = Business.objects.filter(name__icontains='new')
+        # new_bus = business_id(all_businesses)
+        # all_reviews = Review.objects.filter(
+        # business_id=new_bus)
+        # theAvg = get_Avg(all_reviews)
 
         template = 'businesses/business_list.html'
         context = {
-            'all_businesses': all_businesses
+            'all_businesses': all_businesses,
+            # 'theAvg': theAvg
         }
 
         return render(request, template, context)

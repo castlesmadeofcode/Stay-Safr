@@ -8,6 +8,11 @@
 {% block content %}
     <h1>Businesses</h1>
 
+      
+            <label for="new_query">Location: </label>
+            <input id="new_query" type="text" name="new_query" value="{{ business.name }}" required>
+       
+
     <dialog class="infoDialog">
         <div class="infoDialog__message"></div>
         <button class="closeDialog">Close</button>
@@ -24,6 +29,9 @@
         <li class="business">
             <a class="business__title" href="{% url 'capstoneapp:business' business.id %}"> {{ business.name }} </a>
             <img class="profile-image" src="{{ business.image.url }}" />
+             {% if theAvg is not None %}
+                <div>Average Rating {{ theAvg }}</div>
+            {% endif %}
         </li>
     {% endfor %}
     </ol>
