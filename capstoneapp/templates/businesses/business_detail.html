@@ -8,7 +8,13 @@
         <div>Location {{ business.location }}</div>
         <div>Phone Number {{ business.phone_number }}</div>
         <div>Address {{ business.address }}</div>
-        <div>Created by {{ business.customer.user.first_name }} {{ business.customer.user.last_name }}</div>
+         {% for user in users %}
+             {% if user.customer.id == business.customer_id %} 
+         
+            <div>Created by {{user.username}} </div>
+
+            {% endif %}
+        {% endfor %} 
         <div>Website {{ business.website }}</div>
         <div>Business Type {{ business.business_type.name }}</div>
     </section>
@@ -35,11 +41,21 @@
         </form>
         {% endif %}
 
+        
          {% for review in all_reviews %}
          <ul>
         <li class="reviews">
             <div>rating {{ review.rating }}</div>
             <div>comment {{ review.comment }}</div>
+
+           {% for user in users %}
+             {% if user.customer.id == review.customer_id %} 
+         
+            <div>Created by {{user.username}} </div>
+
+            {% endif %}
+        {% endfor %} 
+
 
 {% if review.customer_id == request.user.customer.id %}
 

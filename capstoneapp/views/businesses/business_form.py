@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from capstoneapp.models import Business, BusinessType
 from .business_details import get_business
 
+
 def get_business_types():
     return BusinessType.objects.all()
 
@@ -18,6 +19,7 @@ def business_form(request):
         }
 
         return render(request, template, context)
+
 
 @login_required
 def business_edit_form(request, business_id):
