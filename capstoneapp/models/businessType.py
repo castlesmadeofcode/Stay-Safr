@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class BusinessType(models.Model):
 
     name = models.CharField(max_length=55)

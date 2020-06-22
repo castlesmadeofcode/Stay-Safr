@@ -9,9 +9,16 @@
         <form action="{% url 'capstoneapp:reviews' %}" method="post">
     {% endif %}
         {% csrf_token %}
-        <fieldset>
-            <label for="rating">Rating: </label>
-            <input id="rating" type="text" name="rating" value="{{ review.rating }}" required>
+             <fieldset>
+            <label for="rating">Price: </label>
+                <select required id="rating" type="text" name="rating">
+                        <option value="" disabled selected>Select</option>
+                        <option {% if business.rating == 1 %}selected{% endif %} value="1">1</option>
+                        <option {% if business.rating == 2 %}selected{% endif %} value="2">2</option>
+                        <option {% if business.rating == 3 %}selected{% endif %} value="3">3</option>
+                        <option {% if business.rating == 4 %}selected{% endif %} value="4">4</option>
+                        <option {% if business.rating == 5 %}selected{% endif %} value="5">5</option>
+                    </select>
         </fieldset>
         <fieldset>
             <label for="comment">Comment: </label>

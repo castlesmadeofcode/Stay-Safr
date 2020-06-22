@@ -2,28 +2,38 @@ from django.urls import reverse
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from capstoneapp.models import Business, Review
+from django.contrib.auth.models import User
 
 
 def get_business(business_id):
     return Business.objects.get(pk=business_id)
 
 
-# def get_review(review_id):
-    # return Review.objects.get(pk=review_id)
+def get_Avg(all_reviews):
+    theSum = 0
+    if len(all_reviews) != 0:
+        for review in all_reviews:
+            if review is not None:
+                theSum += review.rating
+                newAvg = theSum/len(all_reviews)
+        return str(round(newAvg, 1))
+    else:
+        return None
 
 
-
-@login_required
 def business_details(request, business_id):
     if request.method == 'GET':
         business = get_business(business_id)
-        all_reviews = Review.objects.filter(business_id = business_id)
+        all_reviews = Review.objects.filter(business_id=business_id)
+        users = User.objects.all()
+        theAvg = get_Avg(all_reviews)
 
         template = 'businesses/business_detail.html'
         context = {
             'business': business,
             'all_reviews': all_reviews,
-            # 'review': review
+            'users': users,
+            'theAvg': theAvg,
         }
 
         return render(request, template, context)
@@ -50,7 +60,6 @@ def business_details(request, business_id):
             and form_data["actual_method"] == "PUT"
         ):
 
-            
             business_to_update = get_business(business_id)
 
             business_to_update.name = form_data['name']
@@ -64,5 +73,5 @@ def business_details(request, business_id):
 
             business_to_update.save()
 
-            #redirects back to the businesses details page after edit
+            # redirects back to the businesses details page after edit
             return redirect(reverse('capstoneapp:business', args=[business_to_update.id]))
