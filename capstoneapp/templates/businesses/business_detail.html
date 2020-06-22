@@ -41,7 +41,7 @@
             <div>rating {{ review.rating }}</div>
             <div>comment {{ review.comment }}</div>
 
-{% comment %} {% if review.customer_id == request.user.customer.id %} {% endcomment %}
+{% if review.customer_id == request.user.customer.id %}
 
         <section id="review-actions" style="display:flex;">
         <form action="{% url 'capstoneapp:review' review.id  %}" method="POST">
@@ -56,7 +56,7 @@
             <button>Edit</button>
         </form>
     </section> 
- {% comment %} {% endif %}  {% endcomment %}
+ {% endif %} 
         
         </li>
         </ul>
