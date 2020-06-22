@@ -9,17 +9,31 @@ def get_business(business_id):
     return Business.objects.get(pk=business_id)
 
 
+def get_Avg(all_reviews):
+    theSum = 0
+    if len(all_reviews) != 0:
+        for review in all_reviews:
+            if review is not None:
+                theSum += review.rating
+                newAvg = theSum/len(all_reviews)
+        return str(round(newAvg, 1))
+    else:
+        return None
+
+
 def business_details(request, business_id):
     if request.method == 'GET':
         business = get_business(business_id)
         all_reviews = Review.objects.filter(business_id=business_id)
         users = User.objects.all()
+        theAvg = get_Avg(all_reviews)
 
         template = 'businesses/business_detail.html'
         context = {
             'business': business,
             'all_reviews': all_reviews,
-            'users': users
+            'users': users,
+            'theAvg': theAvg,
         }
 
         return render(request, template, context)

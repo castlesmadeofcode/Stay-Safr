@@ -17,6 +17,13 @@
         {% endfor %} 
         <div>Website {{ business.website }}</div>
         <div>Business Type {{ business.business_type.name }}</div>
+
+            {% if theAvg is not None %}
+                <div>Average Rating {{ theAvg }}</div>
+            {% endif %}
+
+
+
     </section>
 
     {% if business.customer_id == request.user.customer.id %}
@@ -47,13 +54,16 @@
         <li class="reviews">
             <div>rating {{ review.rating }}</div>
             <div>comment {{ review.comment }}</div>
-
            {% for user in users %}
-             {% if user.customer.id == review.customer_id %} 
-         
+             {% if user.customer.id == review.customer_id %}      
             <div>Created by {{user.username}} </div>
-
             {% endif %}
+        {% endfor %} 
+
+        {% for review in all_reviews %}
+
+
+
         {% endfor %} 
 
 
