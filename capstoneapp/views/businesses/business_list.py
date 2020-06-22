@@ -14,7 +14,9 @@ from django.db.models import Q
 def business_list(request):
     if request.method == 'GET':
         all_businesses = Business.objects.all()
-        new_query = Business.objects.filter(name__icontains='new')
+        new_query = request.GET.get("q")
+        if new_query:
+            all_businesses = all_businesses.filter(name__icontains=new_query)
         # new_bus = business_id(all_businesses)
         # all_reviews = Review.objects.filter(
         # business_id=new_bus)
