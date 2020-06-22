@@ -3,7 +3,7 @@ from capstoneapp.models import Business
 from django.contrib.auth.decorators import login_required
 
 
-@login_required
+
 def business_list(request):
     if request.method == 'GET':
         all_businesses = Business.objects.all()
