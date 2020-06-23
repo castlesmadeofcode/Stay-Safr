@@ -20,13 +20,21 @@
       {% endif %}
 
     <ol class="businesses">
+    
     {% for business in all_businesses %}
+
         <li class="business">
             <a class="business__title" href="{% url 'capstoneapp:business' business.id %}"> {{ business.name }} </a>
             <img class="profile-image" src="{{ business.image.url }}" />
-             {% if theAvg is not None %}
-                <div>Average Rating {{ theAvg }}</div>
+             {% if business.review_avg is not None %}
+                <div>{{business.review_avg}}</div>
             {% endif %}
+            <div>{{business.location}}</div>
+            <div>{{business.business_type.name}}</div>   
+   
+
+
+
         </li>
     {% endfor %}
     </ol>

@@ -2,25 +2,25 @@
 {% block content %}
 
     <section id="business-details">
+        <img class="profile-image" src="{{ business.image.url }}" />
         <h1>{{ business.name }}</h1>
-        <h2>Price {{ business.price }}</h2>
-        <div>Description {{ business.description }}</div>
-        <div>Location {{ business.location }}</div>
-        <div>Phone Number {{ business.phone_number }}</div>
-        <div>Address {{ business.address }}</div>
-         {% for user in users %}
+            {% if theAvg is not None %}
+                <h2>Average Rating {{ theAvg }}</h2>
+            {% endif %}
+        <div>Price {{ business.price }}</div>
+        <div>{{ business.description }}</div>
+        <div>{{ business.location }}</div>
+        <div>{{ business.phone_number }}</div>
+        <div>{{ business.address }}</div>
+         {% comment %} {% for user in users %}
              {% if user.customer.id == business.customer_id %} 
          
-            <div>Created by {{user.username}} </div>
+            <div>{{user.username}} </div>
 
-            {% endif %}
-        {% endfor %} 
-        <div>Website {{ business.website }}</div>
-        <div>Business Type {{ business.business_type.name }}</div>
-
-            {% if theAvg is not None %}
-                <div>Average Rating {{ theAvg }}</div>
-            {% endif %}
+            {% endif %} {% endcomment %}
+        {% comment %} {% endfor %}  {% endcomment %}
+        <div>{{ business.website }}</div>
+        <div>{{ business.business_type.name }}</div>
 
 
 

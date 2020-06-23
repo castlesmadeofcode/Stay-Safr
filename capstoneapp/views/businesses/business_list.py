@@ -6,26 +6,26 @@ from django.db.models import Q
 
 
 # def business_id(all_businesses):
-#     for business in all_businesses:
-#         print(business.id)
-#         return business.id
 
 
 def business_list(request):
     if request.method == 'GET':
         all_businesses = Business.objects.all()
+        all_reviews = Review.objects.all()
         new_query = request.GET.get("q")
         if new_query:
             all_businesses = all_businesses.filter(name__icontains=new_query)
-        # new_bus = business_id(all_businesses)
-        # all_reviews = Review.objects.filter(
-        # business_id=new_bus)
-        # theAvg = get_Avg(all_reviews)
+
+        for business in all_businesses:
+            reviews = Review.objects.filter(business_id=business.id)
+            get_avg = get_Avg(reviews)
+            business.review_avg = get_avg
+        sorted_businesses = sorted(
+            all_businesses, key=lambda business: (business.review_avg), reverse=True)
 
         template = 'businesses/business_list.html'
         context = {
-            'all_businesses': all_businesses,
-            # 'theAvg': theAvg
+            'all_businesses': sorted_businesses,
         }
 
         return render(request, template, context)

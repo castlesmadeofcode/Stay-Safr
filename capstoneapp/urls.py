@@ -12,6 +12,7 @@ urlpatterns = [
     path('businesses/<int:business_id>/form/',
          business_edit_form, name='business_edit_form'),
 
+
     path('reviews/', create_review, name='reviews'),
     path('review/form', review_form, name='review_form'),
     path('reviews/<int:review_id>/', review_details, name='review'),
@@ -21,5 +22,5 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/register', register, name='register'),
     path('logout/', logout_user, name='logout'),
-    path('', home, name='home'),
+    path('', business_list, name='home'),
 ]
