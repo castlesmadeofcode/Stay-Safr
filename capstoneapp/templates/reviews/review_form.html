@@ -9,16 +9,16 @@
         <form action="{% url 'capstoneapp:reviews' %}" method="post">
     {% endif %}
         {% csrf_token %}
-             <fieldset>
-            <label for="rating">Price: </label>
+        <fieldset>
+            <label for="rating">Rating: </label>
                 <select required id="rating" type="text" name="rating">
-                        <option value="" disabled selected>Select</option>
-                        <option {% if business.rating == 1 %}selected{% endif %} value="1">1</option>
-                        <option {% if business.rating == 2 %}selected{% endif %} value="2">2</option>
-                        <option {% if business.rating == 3 %}selected{% endif %} value="3">3</option>
-                        <option {% if business.rating == 4 %}selected{% endif %} value="4">4</option>
-                        <option {% if business.rating == 5 %}selected{% endif %} value="5">5</option>
-                    </select>
+                    <option value="" disabled selected>Select</option>
+                    <option {% if business.rating == 1 %}selected{% endif %} value="1">1</option>
+                    <option {% if business.rating == 2 %}selected{% endif %} value="2">2</option>
+                    <option {% if business.rating == 3 %}selected{% endif %} value="3">3</option>
+                    <option {% if business.rating == 4 %}selected{% endif %} value="4">4</option>
+                    <option {% if business.rating == 5 %}selected{% endif %} value="5">5</option>
+                </select>
         </fieldset>
         <fieldset>
             <label for="comment">Comment: </label>
@@ -32,8 +32,10 @@
         {% if review.id is not None %}
             <input type="hidden" name="actual_method" value="PUT">
             <input type="submit" value="Update" />
+            <a class= "cancel" href="{% url 'capstoneapp:businesses' %}">Cancel</a>
         {% else %}
             <input type="submit" value="Create" />
+            <a class= "cancel" href="{% url 'capstoneapp:businesses' %}">Cancel</a>
         {% endif %}
     </form>
     

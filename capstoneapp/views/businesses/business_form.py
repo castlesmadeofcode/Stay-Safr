@@ -1,7 +1,7 @@
 import sqlite3
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required
-from capstoneapp.models import Business, BusinessType
+from capstoneapp.models import Business, BusinessType, Customer
 from .business_details import get_business
 
 

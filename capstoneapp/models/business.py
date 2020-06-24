@@ -19,9 +19,10 @@ class Business(models.Model):
     created_at = models.DateTimeField(auto_now=True)
     business_type = models.ForeignKey(
         BusinessType, related_name="businesss", on_delete=models.DO_NOTHING)
+    review_avg = 0
 
-    class Meta:
-        ordering = (F('created_at').asc(nulls_last=True),)
+    # class Meta:
+    # ordering = (F('created_at').asc(nulls_last=True),)
 
     def __str__(self):
         return self.name

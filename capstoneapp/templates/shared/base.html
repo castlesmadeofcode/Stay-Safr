@@ -16,11 +16,14 @@
 
     <nav id="site-nav">
         <ol class="navList">
-            <li class="navList__route"><a href="{% url 'capstoneapp:home' %}">Home</a></li>
+            {% comment %} <li class="navList__route"><a href="{% url 'capstoneapp:home' %}">Home</a></li> {% endcomment %}
             <li class="navList__route"><a href="{% url 'capstoneapp:businesses' %}">Businesses</a></li>
             <li class="navList__route"><a href="{% url 'capstoneapp:register' %}">Register</a></li>
             <li class="navList__route"><a href="{% url 'capstoneapp:login' %}">Login</a></li>
+            {% if request.user.is_authenticated %}
             <li class="navList__route"><a href="{% url 'capstoneapp:logout' %}">Logout</a></li>
+            {% endif %}
+
 
         </ol>
     </nav>
