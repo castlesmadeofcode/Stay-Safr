@@ -16,8 +16,6 @@ def review_details(request, review_id):
 
         # Check if this POST is for deleting a review
         #
-        # Note: You can use parenthesis to break up complex
-        #       `if` statements for higher readability
         if (
             "actual_method" in form_data
             and form_data["actual_method"] == "DELETE"

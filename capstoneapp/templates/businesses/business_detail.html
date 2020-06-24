@@ -4,9 +4,7 @@
     <section id="business-details">
         <img class="profile-image" src="{{ business.image.url }}" />
         <h1>{{ business.name }}</h1>
-            {% if theAvg is not None %}
                 <h2>Average Rating {{ theAvg }}</h2>
-            {% endif %}
         <div>Price {{ business.price }}</div>
         <div>{{ business.description }}</div>
         <div>{{ business.location }}</div>
@@ -14,6 +12,7 @@
         <div>{{ business.address }}</div>
         <div>{{ business.website }}</div>
         <div>{{ business.business_type.name }}</div>
+
 
 
 
@@ -36,11 +35,11 @@
     {% endif %}
 
 
-        {% if request.user.customer.id is not None %}
-        <form action="{% url 'capstoneapp:review_form' %}">
-            <input type="submit" value="Add Review"/>
-            <input type="hidden" name="business_id" value="{{business.id}}"/>
-        </form>
+        {% if  request.user.is_authenticated and submitted == False %}
+            <form action="{% url 'capstoneapp:review_form' %}">
+                <input type="submit" value="Add Review"/>
+                <input type="hidden" name="business_id" value="{{business.id}}"/>
+            </form>
         {% endif %}
 
         
@@ -55,11 +54,6 @@
             {% endif %}
         {% endfor %} 
 
-        {% for review in all_reviews %}
-
-
-
-        {% endfor %} 
 
 
 {% if review.customer_id == request.user.customer.id %}
