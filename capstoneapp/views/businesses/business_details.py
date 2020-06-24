@@ -18,7 +18,7 @@ def get_Avg(all_reviews):
                 newAvg = theSum/len(all_reviews)
         return str(round(newAvg, 1))
     else:
-        return None
+        return '0'
 
 
 def business_details(request, business_id):
@@ -27,6 +27,14 @@ def business_details(request, business_id):
         all_reviews = Review.objects.filter(business_id=business_id)
         users = User.objects.all()
         theAvg = get_Avg(all_reviews)
+        submitted = False
+        if request.user.is_authenticated:
+            if len(Review.objects.filter(customer_id=request.user.customer.id, business_id=business_id)) > 0:
+                print(len(Review.objects.filter(
+                    customer_id=request.user.customer.id)))
+                submitted = True
+
+        print(submitted)
 
         template = 'businesses/business_detail.html'
         context = {
@@ -34,6 +42,8 @@ def business_details(request, business_id):
             'all_reviews': all_reviews,
             'users': users,
             'theAvg': theAvg,
+            'submitted': submitted
+
         }
 
         return render(request, template, context)
