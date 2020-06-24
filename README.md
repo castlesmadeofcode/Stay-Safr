@@ -1,4 +1,4 @@
-# Bangazon Django App Project Setup
+# Stay Safr Django App Project Setup
 
 1. Clone down the repo and `cd` into it
 1. Set up your virtual environment:
