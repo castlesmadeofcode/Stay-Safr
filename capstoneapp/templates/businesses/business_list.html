@@ -7,21 +7,16 @@
 
 {% block content %}
     <h1>Businesses</h1>
-
-      
-            <label for="new_query">Location: </label>
-            <input id="new_query" type="text" name="new_query" value="{{ business.name }}" required>
-       
-
-    <dialog class="infoDialog">
-        <div class="infoDialog__message"></div>
-        <button class="closeDialog">Close</button>
-    </dialog>
+    
+    <form method="GET" action = ""> 
+    <input type="text" name="q" placeholder="Search Businesses" value="{{request.GET.q}}" />
+    <input type="submit" value="Search">
+    </form>
 
      {% if request.user.customer.id is not None %}
-        
+        <p>
     <a href="{% url 'capstoneapp:business_form' %}">Add Business</a>
-
+        </p>
       {% endif %}
 
     <ol class="businesses">
