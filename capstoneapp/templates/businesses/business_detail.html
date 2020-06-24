@@ -12,13 +12,6 @@
         <div>{{ business.location }}</div>
         <div>{{ business.phone_number }}</div>
         <div>{{ business.address }}</div>
-         {% comment %} {% for user in users %}
-             {% if user.customer.id == business.customer_id %} 
-         
-            <div>{{user.username}} </div>
-
-            {% endif %} {% endcomment %}
-        {% comment %} {% endfor %}  {% endcomment %}
         <div>{{ business.website }}</div>
         <div>{{ business.business_type.name }}</div>
 
@@ -41,6 +34,8 @@
         </form>
     </section>
     {% endif %}
+
+
         {% if request.user.customer.id is not None %}
         <form action="{% url 'capstoneapp:review_form' %}">
             <input type="submit" value="Add Review"/>
