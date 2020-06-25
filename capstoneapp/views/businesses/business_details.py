@@ -30,8 +30,6 @@ def business_details(request, business_id):
         submitted = False
         if request.user.is_authenticated:
             if len(Review.objects.filter(customer_id=request.user.customer.id, business_id=business_id)) > 0:
-                print(len(Review.objects.filter(
-                    customer_id=request.user.customer.id)))
                 submitted = True
 
         print(submitted)

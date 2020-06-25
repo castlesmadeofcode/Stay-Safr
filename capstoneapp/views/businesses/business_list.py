@@ -7,7 +7,6 @@ from django.db.models import Q
 
 # def business_id(all_businesses):
 
-
 def business_list(request):
     if request.method == 'GET':
         all_businesses = Business.objects.all()
@@ -33,6 +32,8 @@ def business_list(request):
     elif request.method == 'POST':
         form_data = request.POST
         form_files = request.FILES
+
+        # creates a new instance of Business to add to the database using user input from form
 
         new_business = Business.objects.create(
             name=form_data['name'],

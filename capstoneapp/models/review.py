@@ -12,7 +12,7 @@ class Review(models.Model):
     comment = models.CharField(max_length=250, null=True)
     created_at = models.DateTimeField(auto_now=True)
     business = models.ForeignKey(
-        Business, related_name="businesss", on_delete=models.DO_NOTHING)
+        Business, related_name="businesss", on_delete=models.CASCADE)
 
     class Meta:
         ordering = (F('created_at').asc(nulls_last=True),)
