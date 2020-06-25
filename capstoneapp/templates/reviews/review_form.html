@@ -11,14 +11,28 @@
         {% csrf_token %}
         <fieldset>
             <label for="rating">Rating: </label>
-                <select required id="rating" type="text" name="rating">
+                {% comment %} <select required id="rating" type="text" name="rating">
                     <option value="" disabled selected>Select</option>
                     <option {% if business.rating == 1 %}selected{% endif %} value="1">1</option>
                     <option {% if business.rating == 2 %}selected{% endif %} value="2">2</option>
                     <option {% if business.rating == 3 %}selected{% endif %} value="3">3</option>
                     <option {% if business.rating == 4 %}selected{% endif %} value="4">4</option>
                     <option {% if business.rating == 5 %}selected{% endif %} value="5">5</option>
-                </select>
+                </select> {% endcomment %}
+
+            <div class="stars">
+                <input id="star-5" type="radio" name="rating" value="5" required/>
+                <label for="star-5"></label>
+                <input id="star-4" type="radio" name="rating" value="4"/>
+                <label for="star-4"></label>
+                <input id="star-3" type="radio" name="rating" value="3"/>
+                <label for="star-3"></label>
+                <input id="star-2" type="radio" name="rating" value="2"/>
+                <label for="star-2"></label>
+                <input id="star-1" type="radio" name="rating" value="1"/>
+                <label for="star-1"></label>
+            </div>
+            
         </fieldset>
         <fieldset>
             <label for="comment">Comment: </label>

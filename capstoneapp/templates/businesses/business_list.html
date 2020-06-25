@@ -6,16 +6,15 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Businesses</h1>
     
     <form method="GET" action = ""> 
     <input type="text" name="q" placeholder="Search Businesses" value="{{request.GET.q}}" />
-    <input type="submit" value="Search">
+    <input type="submit" value="Search" class="btn btn-dark btn-sm btn btn-dark">
     </form>
 
      {% if request.user.customer.id is not None %}
         <p>
-    <a href="{% url 'capstoneapp:business_form' %}">Add Business</a>
+    <a class="btn btn-dark btn-sm btn btn-dark" href="{% url 'capstoneapp:business_form' %}">Add Business</a>
         </p>
       {% endif %}
 
@@ -23,19 +22,17 @@
     
     {% for business in all_businesses %}
 
-        <li class="business">
-            <a class="business__title" href="{% url 'capstoneapp:business' business.id %}"> {{ business.name }} </a>
-            <img class="profile-image" src="{{ business.image.url }}" />
-             {% if business.review_avg is not None %}
-                <div>{{business.review_avg}}</div>
-            {% endif %}
-            <div>{{business.location}}</div>
-            <div>{{business.business_type.name}}</div>   
-   
+<div class="card" style="width: 18rem;">
+  <img src="{{ business.image.url }}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title" >{{ business.name }}</h5>
+    <h5 class="card-title" >Average Rating: {{business.review_avg}}</h5>
+    <a href="{% url 'capstoneapp:business' business.id %}" class="btn btn-primary">More Info</a>
+    
+  </div>
+</div> 
 
 
-
-        </li>
     {% endfor %}
     </ol>
 {% endblock %}

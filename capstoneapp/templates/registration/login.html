@@ -1,7 +1,6 @@
 {% extends 'shared/base.html' %}
 {% block content %}
 
-<h2>Login</h2>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
@@ -10,4 +9,6 @@
 <form action="{% url 'capstoneapp:register' %}">
     <input type="submit" value="Register"/>
 </form>
+
+
 {% endblock %}

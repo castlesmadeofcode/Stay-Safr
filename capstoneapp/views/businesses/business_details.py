@@ -16,7 +16,7 @@ def get_Avg(all_reviews):
             if review is not None:
                 theSum += review.rating
                 newAvg = theSum/len(all_reviews)
-        return str(round(newAvg, 1))
+        return str(round(newAvg))
     else:
         return '0'
 
