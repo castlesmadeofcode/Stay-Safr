@@ -34,6 +34,8 @@ def business_list(request):
         form_data = request.POST
         form_files = request.FILES
 
+        # creates a new instance of Business to add to the database using user input from form
+
         new_business = Business.objects.create(
             name=form_data['name'],
             price=form_data['price'],
