@@ -7,7 +7,6 @@ from django.db.models import Q
 
 # def business_id(all_businesses):
 
-
 def business_list(request):
     if request.method == 'GET':
         all_businesses = Business.objects.all()
