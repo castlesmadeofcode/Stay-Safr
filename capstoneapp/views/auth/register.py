@@ -25,7 +25,6 @@ def register(request):
             )
 
             new_user.customer.address = form_data['address']
-            new_user.customer.phone_number = form_data['phone_number']
             new_user.customer.image = form_files['image']
             new_user.customer.is_owner = False
             new_user.customer.save()

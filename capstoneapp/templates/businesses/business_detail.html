@@ -79,13 +79,11 @@
                 <label for="star-1"></label>
             </div>
             {% endif %}</p>
-        <p class="card-text">Price {{ business.price }}/5</p>
         <p class="card-text">{{ business.description }}</p>
         <p class="card-text">{{ business.location }}</p>
         <p class="card-text">{{ business.phone_number }}</p>
         <p class="card-text">{{ business.address }}</p>
         <p class="card-text">{{ business.website }}</p>
-        <p class="card-text">{{ business.business_type.name }}</p>
         <p class="card-text"><small class="text-muted">{{business.created_at}}</small></p>
   </div>
 </div>
@@ -118,37 +116,37 @@
             </form>
         {% endif %}
 
-        
-         {% for review in all_reviews %}
-         <ul>
-        <li class="reviews">
-            <div>User:{{user.username}} </div>
-            <div>rating: {{ review.rating }}</div>
-            <div>review: {{ review.comment }}</div>
-           {% for user in users %}
-             {% if user.customer.id == review.customer_id %}      
-            <div>{{review.created_at}} </div>
 
-            {% endif %}
+{% for review in all_reviews %}
 
-        <div class="card mb-3" style="max-width: 540px;">
+  <div class="card mb-3" style="max-width: 540px;">
   <div class="row no-gutters">
     <div class="col-md-4">
- {% for user in users %}
-    {% if user.customer.id == review.customer_id %}      
-    <img src="{{user.customer.image}}" class="card-img" alt="...">
-{% endfor %} 
+{% for user in users %}
+{% if user.customer.id == review.customer_id %} 
+    <img src="{{user.customer.image.url}}" class="card-img" alt="...">
+{% endif %} 
+{% endfor %}
+
 
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+{% for user in users %}
+{% if user.customer.id == review.customer_id %} 
+        <h5 class="card-title">User: {{user.username}}</h5>
+{% endif %} 
+{% endfor %}
+        <p class="card-text">Rating: {{ review.rating }}</p>
+        <p class="card-text">Review: {{ review.comment }}</p>
+        <p class="card-text"><small class="text-muted">{{review.created_at}}</small></p>
       </div>
     </div>
   </div>
 </div>
+
+
+
 
 
 
@@ -172,7 +170,7 @@
         
         </li>
         </ul>
-        {% endfor %}
+{% endfor %} 
 
     
 {% endblock %}

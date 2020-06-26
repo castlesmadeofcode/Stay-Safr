@@ -10,7 +10,6 @@ class Customer(models.Model):
     user = models.OneToOneField(
         User, related_name='customer', on_delete=models.CASCADE)
     address = models.CharField(max_length=100)
-    phone_number = models.IntegerField()
     image = models.ImageField(upload_to="media/", null=True)
     is_owner = models.BooleanField()
 
@@ -26,7 +25,7 @@ class Customer(models.Model):
 def create_customer(sender, instance, created, **kwargs):
     if created:
         Customer.objects.create(
-            user=instance, is_owner=False, address="", phone_number=0, image="img")
+            user=instance, is_owner=False, address="", image="img")
 
 
 @receiver(post_save, sender=User)

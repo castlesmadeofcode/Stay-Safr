@@ -36,10 +36,8 @@ def business_list(request):
 
         new_business = Business.objects.create(
             name=form_data['name'],
-            price=form_data['price'],
             description=form_data['description'],
             customer_id=request.user.customer.id,
-            location=form_data['location'],
             phone_number=form_data['phone_number'],
             address=form_data['address'],
             website=form_data['website'],
