@@ -10,7 +10,7 @@
         </ul>
     {% endif %}
 
-    <form action="{% url 'capstoneapp:register' %}" method="post">
+    {% comment %} <form action="{% url 'capstoneapp:register' %}" method="post">
       {% csrf_token %}
       <fieldset>
           <label for="username">Username: </label>
@@ -25,7 +25,7 @@
           <input id="password_confirmation" type="password" name="password_confirmation" required>
       </fieldset>
       <fieldset>
-          <label for="address">Address: </label>
+          <label for="address">Location: </label>
           <input id="address" type="text" name="address" required>
       </fieldset>
       <fieldset>
@@ -39,5 +39,37 @@
       </fieldset>
 
       <input type="submit" value="Submit" />
-    </form>
+    </form> {% endcomment %}
+
+    <form action="{% url 'capstoneapp:register' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_table }}
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="username">Username</label>
+      <input type="username" class="form-control" id="inputEmail4" name="username">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputPassword4">Password</label>
+      <input type="password" class="form-control" id="inputPassword4" name="password">
+    </div>
+       <div class="form-group col-md-4">
+      <label for="inputPassword4">Password Confirmation</label>
+      <input type="password" class="form-control" id="inputPassword4" name="password_confirmation">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Location</label>
+    <input type="text" class="form-control" id="inputAddress"  name="address">
+  </div>
+  <div class="form-group">
+    <label for="phone_number">Phone Number</label>
+    <input type="text" class="form-control" id="phone_number" name="phone_number">
+  </div>
+   <div class="form-group">
+    <label for="image_path">Image</label>
+    <input type="text" class="form-control" id="image_path" name="image_path">
+  </div>
+  <button type="submit" class="btn btn-primary" value="submit">Submit</button>
+</form>
 {% endblock %}

@@ -3,11 +3,13 @@
 
 <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
+    {{ form.as_table }}
+
+    <button class="btn btn-primary" type="submit">Login</button>
 </form>
-<form action="{% url 'capstoneapp:register' %}">
-    <input type="submit" value="Register"/>
+<a href="{% url 'capstoneapp:register' %}">
+Dont have an account?
+    {% comment %} <input class="btn btn-primary" type="submit" value="Register"/> {% endcomment %}
 </form>
 
 
