@@ -10,40 +10,9 @@
         </ul>
     {% endif %}
 
-    {% comment %} <form action="{% url 'capstoneapp:register' %}" method="post">
-      {% csrf_token %}
-      <fieldset>
-          <label for="username">Username: </label>
-          <input id="username" type="text" name="username" required>
-      </fieldset>
-      <fieldset>
-          <label for="password">Password: </label>
-          <input id="password" type="password" name="password" required>
-      </fieldset>
-      <fieldset>
-          <label for="password_confirmation">Password Confirmation: </label>
-          <input id="password_confirmation" type="password" name="password_confirmation" required>
-      </fieldset>
-      <fieldset>
-          <label for="address">Location: </label>
-          <input id="address" type="text" name="address" required>
-      </fieldset>
-      <fieldset>
-          <label for="phone_number">Phone Number: </label>
-          <input id="phone_number" type="text" name="phone_number" required>
-      </fieldset>
-      <fieldset>
-          <label for="image_path">Image: </label>
-          <input id="image_path" type="text" name="image_path" required>
-      </fieldset>
-      </fieldset>
 
-      <input type="submit" value="Submit" />
-    </form> {% endcomment %}
-
-    <form action="{% url 'capstoneapp:register' %}" method="post">
+    <form action="{% url 'capstoneapp:register' %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_table }}
   <div class="form-row">
     <div class="form-group col-md-4">
       <label for="username">Username</label>
@@ -54,8 +23,8 @@
       <input type="password" class="form-control" id="inputPassword4" name="password">
     </div>
        <div class="form-group col-md-4">
-      <label for="inputPassword4">Password Confirmation</label>
-      <input type="password" class="form-control" id="inputPassword4" name="password_confirmation">
+      <label for="inputPassword3">Password Confirmation</label>
+      <input type="password" class="form-control" id="inputPassword3" name="password_confirmation">
     </div>
   </div>
   <div class="form-group">
@@ -67,8 +36,8 @@
     <input type="text" class="form-control" id="phone_number" name="phone_number">
   </div>
    <div class="form-group">
-    <label for="image_path">Image</label>
-    <input type="text" class="form-control" id="image_path" name="image_path">
+    <label for="image">Image</label>
+    <input required type="file" id="image" name="image">
   </div>
   <button type="submit" class="btn btn-primary" value="submit">Submit</button>
 </form>

@@ -1,10 +1,11 @@
 {% extends 'shared/base.html' %}
 {% block content %}
 
-    <section id="business-details">
-        <img class="profile-image" src="{{ business.image.url }}" />
-        <h1>{{ business.name }}</h1>
-        <h2>{% if theAvg == "5" %}
+    <div class="card mb-3" style="width: 24rem;">
+  <img src="{{ business.image.url }}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{ business.name }}</h5>
+    <p class="card-text"> {% if theAvg == "5" %}
              <div class="stars">
                 <input id="star-5" type="radio" name="rating" value="5" checked=true disabled=true/>
                 <label for="star-5"></label>
@@ -77,21 +78,15 @@
                 <input id="star-1" type="radio" name="rating" value="1" checked=true disabled=true/>
                 <label for="star-1"></label>
             </div>
-            {% endif %}</h2>
-        <div>Price {{ business.price }}</div>
-        <div>{{ business.description }}</div>
-        <div>{{ business.location }}</div>
-        <div>{{ business.phone_number }}</div>
-        <div>{{ business.address }}</div>
-        <div>{{ business.website }}</div>
-        <div>{{ business.business_type.name }}</div>
-
-    <div class="card mb-3" style="width: 24rem;">
-  <img src="{{ business.image.url }}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            {% endif %}</p>
+        <p class="card-text">Price {{ business.price }}/5</p>
+        <p class="card-text">{{ business.description }}</p>
+        <p class="card-text">{{ business.location }}</p>
+        <p class="card-text">{{ business.phone_number }}</p>
+        <p class="card-text">{{ business.address }}</p>
+        <p class="card-text">{{ business.website }}</p>
+        <p class="card-text">{{ business.business_type.name }}</p>
+        <p class="card-text"><small class="text-muted">{{business.created_at}}</small></p>
   </div>
 </div>
 
@@ -127,13 +122,33 @@
          {% for review in all_reviews %}
          <ul>
         <li class="reviews">
-            <div>rating {{ review.rating }}</div>
-            <div>comment {{ review.comment }}</div>
+            <div>User:{{user.username}} </div>
+            <div>rating: {{ review.rating }}</div>
+            <div>review: {{ review.comment }}</div>
            {% for user in users %}
              {% if user.customer.id == review.customer_id %}      
-            <div>Created by {{user.username}} </div>
+            <div>{{review.created_at}} </div>
+
             {% endif %}
-        {% endfor %} 
+
+        <div class="card mb-3" style="max-width: 540px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+ {% for user in users %}
+    {% if user.customer.id == review.customer_id %}      
+    <img src="{{user.customer.image}}" class="card-img" alt="...">
+{% endfor %} 
+
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
@@ -148,6 +163,7 @@
 
         <form action="{% url 'capstoneapp:review_edit_form' review.id %}" method="GET">
         <input type="hidden" name="business_id" value="{{business.id}}"/>
+
             {% csrf_token %}
             <button class="btn btn-dark btn-sm btn btn-dark">Edit</button>
         </form>

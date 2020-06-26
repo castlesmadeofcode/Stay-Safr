@@ -11,14 +11,6 @@
         {% csrf_token %}
         <fieldset>
             <label for="rating">Rating: </label>
-                {% comment %} <select required id="rating" type="text" name="rating">
-                    <option value="" disabled selected>Select</option>
-                    <option {% if business.rating == 1 %}selected{% endif %} value="1">1</option>
-                    <option {% if business.rating == 2 %}selected{% endif %} value="2">2</option>
-                    <option {% if business.rating == 3 %}selected{% endif %} value="3">3</option>
-                    <option {% if business.rating == 4 %}selected{% endif %} value="4">4</option>
-                    <option {% if business.rating == 5 %}selected{% endif %} value="5">5</option>
-                </select> {% endcomment %}
 
             <div class="stars">
                 <input id="star-5" type="radio" name="rating" value="5" required/>

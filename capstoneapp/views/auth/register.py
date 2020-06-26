@@ -12,6 +12,7 @@ from django.forms import ValidationError
 def register(request):
     if request.method == 'POST':
         form_data = request.POST
+        form_files = request.FILES
 
         try:
             if form_data['password'] != form_data['password_confirmation']:
@@ -25,7 +26,7 @@ def register(request):
 
             new_user.customer.address = form_data['address']
             new_user.customer.phone_number = form_data['phone_number']
-            new_user.customer.image_path = form_data['image_path']
+            new_user.customer.image = form_files['image']
             new_user.customer.is_owner = False
             new_user.customer.save()
 
