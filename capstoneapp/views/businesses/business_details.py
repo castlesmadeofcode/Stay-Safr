@@ -16,7 +16,7 @@ def get_Avg(all_reviews):
             if review is not None:
                 theSum += review.rating
                 newAvg = theSum/len(all_reviews)
-        return str(round(newAvg, 1))
+        return str(round(newAvg))
     else:
         return '0'
 
@@ -71,9 +71,7 @@ def business_details(request, business_id):
             business_to_update = get_business(business_id)
 
             business_to_update.name = form_data['name']
-            business_to_update.price = form_data['price']
             business_to_update.description = form_data['description']
-            business_to_update.location = form_data['location']
             business_to_update.phone_number = form_data['phone_number']
             business_to_update.address = form_data['address']
             business_to_update.website = form_data['website']

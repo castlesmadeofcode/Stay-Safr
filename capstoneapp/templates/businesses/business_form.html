@@ -14,23 +14,8 @@
             <input id="name" type="text" name="name" value="{{ business.name }}" required>
         </fieldset>
         <fieldset>
-            <label for="price">Price: </label>
-                <select required id="price" type="text" name="price">
-                        <option value="" disabled selected>Select</option>
-                        <option {% if business.price == 1 %}selected{% endif %} value="1">1</option>
-                        <option {% if business.price == 2 %}selected{% endif %} value="2">2</option>
-                        <option {% if business.price == 3 %}selected{% endif %} value="3">3</option>
-                        <option {% if business.price == 4 %}selected{% endif %} value="4">4</option>
-                        <option {% if business.price == 5 %}selected{% endif %} value="5">5</option>
-                    </select>
-        </fieldset>
-        <fieldset>
             <label for="description">Description: </label>
             <input id="description" type="text" name="description" value="{{ business.description }}" required>
-        </fieldset>
-        <fieldset>
-            <label for="location">Location: </label>
-            <input id="location" type="text" name="location" value="{{ business.location }}" required>
         </fieldset>
         <fieldset>
             <label for="phone_number">Phone Number: </label>

@@ -1,22 +1,96 @@
 {% extends 'shared/base.html' %}
 {% block content %}
 
-    <section id="business-details">
-        <img class="profile-image" src="{{ business.image.url }}" />
-        <h1>{{ business.name }}</h1>
-                <h2>Average Rating {{ theAvg }}</h2>
-        <div>Price {{ business.price }}</div>
-        <div>{{ business.description }}</div>
-        <div>{{ business.location }}</div>
-        <div>{{ business.phone_number }}</div>
-        <div>{{ business.address }}</div>
-        <div>{{ business.website }}</div>
-        <div>{{ business.business_type.name }}</div>
+    <div class="card mb-3" style="width: 24rem;">
+  <img src="{{ business.image.url }}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{ business.name }}</h5>
+    <p class="card-text"> {% if theAvg == "5" %}
+             <div class="stars">
+                <input id="star-5" type="radio" name="rating" value="5" checked=true disabled=true/>
+                <label for="star-5"></label>
+                <input id="star-4" type="radio" name="rating" value="4" disabled=true/>
+                <label for="star-4"></label>
+                <input id="star-3" type="radio" name="rating" value="3" disabled=true/>
+                <label for="star-3"></label>
+                <input id="star-2" type="radio" name="rating" value="2" disabled=true/>
+                <label for="star-2"></label>
+                <input id="star-1" type="radio" name="rating" value="1" disabled=true/>
+                <label for="star-1"></label>
+            </div>
+            {% endif %}
 
+            {% if theAvg == "4" %}
+             <div class="stars">
+                <input id="star-5" type="radio" name="rating" value="5" disabled=true/>
+                <label for="star-5"></label>
+                <input id="star-4" type="radio" name="rating" value="4" checked=true disabled=true/>
+                <label for="star-4"></label>
+                <input id="star-3" type="radio" name="rating" value="3" disabled=true/>
+                <label for="star-3"></label>
+                <input id="star-2" type="radio" name="rating" value="2" disabled=true/>
+                <label for="star-2"></label>
+                <input id="star-1" type="radio" name="rating" value="1" disabled=true/>
+                <label for="star-1"></label>
+            </div>
+            {% endif %}
 
+            {% if theAvg == "3" %}
+             <div class="stars">
+                <input id="star-5" type="radio" name="rating" value="5" disabled=true/>
+                <label for="star-5"></label>
+                <input id="star-4" type="radio" name="rating" value="4" disabled=true/>
+                <label for="star-4"></label>
+                <input id="star-3" type="radio" name="rating" value="3" checked=true disabled=true/>
+                <label for="star-3"></label>
+                <input id="star-2" type="radio" name="rating" value="2" disabled=true/>
+                <label for="star-2"></label>
+                <input id="star-1" type="radio" name="rating" value="1" disabled=true/>
+                <label for="star-1"></label>
+            </div>
+            {% endif %}
 
+            {% if theAvg == "2" %}
+             <div class="stars">
+                <input id="star-5" type="radio" name="rating" value="5" disabled=true/>
+                <label for="star-5"></label>
+                <input id="star-4" type="radio" name="rating" value="4" disabled=true/>
+                <label for="star-4"></label>
+                <input id="star-3" type="radio" name="rating" value="3"disabled=true/>
+                <label for="star-3"></label>
+                <input id="star-2" type="radio" name="rating" value="2" checked=true disabled=true/>
+                <label for="star-2"></label>
+                <input id="star-1" type="radio" name="rating" value="1" disabled=true/>
+                <label for="star-1"></label>
+            </div>
+            {% endif %}
+
+            {% if theAvg == "1" %}
+             <div class="stars">
+                <input id="star-5" type="radio" name="rating" value="5" disabled=true/>
+                <label for="star-5"></label>
+                <input id="star-4" type="radio" name="rating" value="4" disabled=true/>
+                <label for="star-4"></label>
+                <input id="star-3" type="radio" name="rating" value="3" disabled=true/>
+                <label for="star-3"></label>
+                <input id="star-2" type="radio" name="rating" value="2" disabled=true/>
+                <label for="star-2"></label>
+                <input id="star-1" type="radio" name="rating" value="1" checked=true disabled=true/>
+                <label for="star-1"></label>
+            </div>
+            {% endif %}</p>
+        <p class="card-text">{{ business.description }}</p>
+        <p class="card-text">{{ business.location }}</p>
+        <p class="card-text">{{ business.phone_number }}</p>
+        <p class="card-text">{{ business.address }}</p>
+        <p class="card-text">{{ business.website }}</p>
+        <p class="card-text"><small class="text-muted">{{business.created_at}}</small></p>
+  </div>
+</div>
 
     </section>
+
+
 
     {% if business.customer_id == request.user.customer.id %}
 
@@ -24,12 +98,12 @@
         <form action="{% url 'capstoneapp:business' business.id %}" method="POST">
             {% csrf_token %}
             <input type="hidden" name="actual_method" value="DELETE">
-            <button onclick="return confirm('Are you sure you want to delete this?')">Delete</button>
+            <button class="btn btn-dark btn-sm btn btn-dark" onclick="return confirm('Are you sure you want to delete this?')">Delete</button>
         </form>
 
         <form action="{% url 'capstoneapp:business_edit_form' business.id %}" method="GET">
             {% csrf_token %}
-            <button>Edit</button>
+            <button class="btn btn-dark btn-sm btn btn-dark">Edit</button>
         </form>
     </section>
     {% endif %}
@@ -37,22 +111,42 @@
 
         {% if  request.user.is_authenticated and submitted == False %}
             <form action="{% url 'capstoneapp:review_form' %}">
-                <input type="submit" value="Add Review"/>
+                <input class="btn btn-dark btn-sm btn btn-dark" type="submit" value="Add Review"/>
                 <input type="hidden" name="business_id" value="{{business.id}}"/>
             </form>
         {% endif %}
 
-        
-         {% for review in all_reviews %}
-         <ul>
-        <li class="reviews">
-            <div>rating {{ review.rating }}</div>
-            <div>comment {{ review.comment }}</div>
-           {% for user in users %}
-             {% if user.customer.id == review.customer_id %}      
-            <div>Created by {{user.username}} </div>
-            {% endif %}
-        {% endfor %} 
+
+{% for review in all_reviews %}
+
+  <div class="card mb-3" style="max-width: 540px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+{% for user in users %}
+{% if user.customer.id == review.customer_id %} 
+    <img src="{{user.customer.image.url}}" class="card-img" alt="...">
+{% endif %} 
+{% endfor %}
+
+
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+{% for user in users %}
+{% if user.customer.id == review.customer_id %} 
+        <h5 class="card-title">User: {{user.username}}</h5>
+{% endif %} 
+{% endfor %}
+        <p class="card-text">Rating: {{ review.rating }}</p>
+        <p class="card-text">Review: {{ review.comment }}</p>
+        <p class="card-text"><small class="text-muted">{{review.created_at}}</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 
 
@@ -62,20 +156,21 @@
         <form action="{% url 'capstoneapp:review' review.id  %}" method="POST">
             {% csrf_token %}
             <input type="hidden" name="actual_method" value="DELETE">
-            <button onclick="return confirm('Are you sure you want to delete this?')">Delete</button>
+            <button class="btn btn-dark btn-sm btn btn-dark" onclick="return confirm('Are you sure you want to delete this?')">Delete</button>
         </form>
 
         <form action="{% url 'capstoneapp:review_edit_form' review.id %}" method="GET">
         <input type="hidden" name="business_id" value="{{business.id}}"/>
+
             {% csrf_token %}
-            <button>Edit</button>
+            <button class="btn btn-dark btn-sm btn btn-dark">Edit</button>
         </form>
     </section> 
  {% endif %} 
         
         </li>
         </ul>
-        {% endfor %}
+{% endfor %} 
 
     
 {% endblock %}
