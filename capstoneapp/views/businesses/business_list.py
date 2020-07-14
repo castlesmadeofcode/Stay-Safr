@@ -36,7 +36,9 @@ def business_list(request):
         form_data = request.POST
         form_files = request.FILES
 
+
         # """Makes a POST request to add a new business and then re-directs to the business list page."""
+        # creates a new instance of Business to add to the database using user input from form
 
         new_business = Business.objects.create(
             name=form_data['name'],
