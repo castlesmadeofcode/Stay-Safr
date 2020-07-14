@@ -47,11 +47,11 @@
 
         {% if business.id is not None %}
             <input type="hidden" name="actual_method" value="PUT">
-            <input type="submit" value="Update" />
-            <a class= "cancel" href="{% url 'capstoneapp:businesses' %}">Cancel</a>
+            <input class="btn btn-dark" type="submit" value="Update" />
+            <a class= "btn btn-dark cancel" href="{% url 'capstoneapp:businesses' %}">Cancel</a>
         {% else %}
-            <input type="submit" value="Create" />
-            <a class= "cancel" href="{% url 'capstoneapp:businesses' %}">Cancel</a>
+            <input class="btn btn-dark" type="submit" value="Create" />
+            <a  class="btn btn-dark cancel" href="{% url 'capstoneapp:businesses' %}">Cancel</a>
         {% endif %}
     </form>
     

@@ -12,6 +12,8 @@ def get_business_types():
 @login_required
 def business_form(request):
     if request.method == 'GET':
+        # """GETS a list of all business types to populate the dropdown in the add business form."""
+
         business_types = get_business_types()
         template = 'businesses/business_form.html'
         context = {
@@ -25,6 +27,8 @@ def business_form(request):
 def business_edit_form(request, business_id):
 
     if request.method == 'GET':
+
+        # """GETS the details of a specific business to pre-fill the business edit form."""
         business = get_business(business_id)
         business_types = get_business_types
         template = 'businesses/business_form.html'

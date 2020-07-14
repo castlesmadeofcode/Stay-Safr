@@ -20,6 +20,9 @@ def review_details(request, review_id):
             "actual_method" in form_data
             and form_data["actual_method"] == "DELETE"
         ):
+
+            # """Makes a POST request to delete a review and then re-directs to the business detail page."""
+
             review_to_delete = get_review(review_id)
             review_to_delete.delete()
 
@@ -30,6 +33,9 @@ def review_details(request, review_id):
             "actual_method" in form_data
             and form_data["actual_method"] == "PUT"
         ):
+
+           # """Makes a POST request to update an existing review and then re-directs to the business detail page."""
+
             review_to_update = get_review(review_id)
             review_to_update.rating = form_data['rating']
             review_to_update.comment = form_data['comment']
