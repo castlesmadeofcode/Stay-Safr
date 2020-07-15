@@ -21,7 +21,7 @@ def review_details(request, review_id):
             and form_data["actual_method"] == "DELETE"
         ):
 
-            # """Makes a POST request to delete a review and then re-directs to the business detail page."""
+         # """Makes a POST request to delete a review and then re-directs to the business detail page."""
 
             review_to_delete = get_review(review_id)
             review_to_delete.delete()
