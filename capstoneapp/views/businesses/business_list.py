@@ -5,15 +5,18 @@ from .business_details import get_Avg
 from django.db.models import Q
 
 
-# def business_id(all_businesses):
-
 def business_list(request):
     if request.method == 'GET':
+
+        # """GETS all of the business and review objects."""
+
         all_businesses = Business.objects.all()
         all_reviews = Review.objects.all()
         new_query = request.GET.get("q")
         if new_query:
             all_businesses = all_businesses.filter(name__icontains=new_query)
+
+        # """GETS all of the reviews associated with a business, calculates the average rating of reviews, sorts businesses based on average rating from high to low ."""
 
         for business in all_businesses:
             reviews = Review.objects.filter(business_id=business.id)
@@ -33,6 +36,8 @@ def business_list(request):
         form_data = request.POST
         form_files = request.FILES
 
+
+        # """Makes a POST request to add a new business and then re-directs to the business list page."""
         # creates a new instance of Business to add to the database using user input from form
 
         new_business = Business.objects.create(

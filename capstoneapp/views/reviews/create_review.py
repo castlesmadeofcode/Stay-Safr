@@ -10,6 +10,8 @@ def create_review(request):
     if request.method == 'POST':
         form_data = request.POST
 
+    # """Makes a POST request to add a new review and then re-directs to the review detail page."""
+
         new_review = Review.objects.create(
             rating=form_data['rating'],
             comment=form_data['comment'],

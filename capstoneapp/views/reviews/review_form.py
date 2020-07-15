@@ -9,7 +9,6 @@ from .review_details import get_review
 def review_form(request):
     if request.method == 'GET':
         business_id = request.GET['business_id']
-        print(business_id)
         template = 'reviews/review_form.html'
         context = {
             'business_id': business_id
@@ -22,6 +21,8 @@ def review_form(request):
 def review_edit_form(request, review_id):
 
     if request.method == 'GET':
+
+        # """GETS the details of a specific review to pre-fill the review edit form."""
         review = get_review(review_id)
         business_id = request.GET['business_id']
         template = 'reviews/review_form.html'

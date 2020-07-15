@@ -1,6 +1,7 @@
 {% extends 'shared/base.html' %}
 {% block content %}
-
+    
+<div id="detail_div">
     <div class="card mb-3" style="width: 24rem;">
   <img src="{{ business.image.url }}" class="card-img-top" alt="...">
   <div class="card-body">
@@ -171,6 +172,7 @@
         </li>
         </ul>
 {% endfor %} 
+</div>
 
     
 {% endblock %}
