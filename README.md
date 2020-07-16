@@ -6,7 +6,8 @@
 1. Activate virtual environment:
    `source ./capstoneenv/bin/activate`
 1. Install dependencies:
-   `pip install -r requirements.txt` pip install Pillow
+   `pip install -r requirements.txt`
+   `pip install Pillow`
 1. Create a Superuser:
    `python manage.py createsuperuser`
 1. Run migrations:
